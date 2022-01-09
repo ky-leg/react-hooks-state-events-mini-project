@@ -1,9 +1,23 @@
 import React from "react";
+import Task from "./Task.js";
 
-function TaskList() {
+
+function TaskList({tasks, deleteItem}) {
+
+  function onDelete(taskID){
+    deleteItem(taskID)
+  }
+
   return (
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
+      {tasks.map((item) => (
+      <Task 
+      className="selected"
+      key={item.text}
+      category={item.category}
+      text={item.text}
+      onClick={onDelete}
+       />))}
     </div>
   );
 }
